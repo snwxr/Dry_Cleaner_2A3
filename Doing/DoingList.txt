@@ -1,1 +1,3 @@
-
+-corriger le cahier de charge
+-penser a un scenario arduino
+-commencer l'elaboration des interfaces graphiques
