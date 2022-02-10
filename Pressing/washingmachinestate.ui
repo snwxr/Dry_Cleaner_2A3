@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WashingMachineState</class>
+ <widget class="QDialog" name="WashingMachineState">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>510</width>
+    <height>381</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Washing Machines Management</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox_WashingMachines">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>70</y>
+     <width>321</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Washing Machines Management</string>
+   </property>
+   <widget class="QPushButton" name="pushButton_AddNewMachine">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>141</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add A New Machine</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_ViewAllMachines">
+    <property name="geometry">
+     <rect>
+      <x>172</x>
+      <y>60</y>
+      <width>121</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>View All Machines</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_SendReclamation">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>110</y>
+      <width>151</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Send Reclamation</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton_BACK">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>270</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>BACK</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

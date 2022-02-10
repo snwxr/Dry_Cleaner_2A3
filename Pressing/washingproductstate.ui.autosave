@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WashingProductState</class>
+ <widget class="QDialog" name="WashingProductState">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>508</width>
+    <height>430</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Washing Products Management</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>80</y>
+     <width>301</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Washing Products Management</string>
+   </property>
+   <widget class="QPushButton" name="pushButton_AddNewProduct">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>131</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add A New Product</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_ViewHistory">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>50</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>View History</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_ViewAllProducts">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>110</y>
+      <width>121</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>View All Products</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Oders">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>110</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Orders</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton_BACK">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>310</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>BACK</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
