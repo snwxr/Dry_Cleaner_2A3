@@ -1304,7 +1304,7 @@ QDateEdit::drop-down {
        <rect>
         <x>10</x>
         <y>30</y>
-        <width>351</width>
+        <width>441</width>
         <height>151</height>
        </rect>
       </property>
@@ -1312,14 +1312,14 @@ QDateEdit::drop-down {
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="tout_afficher_emp">
            <property name="text">
             <string>TOUT AFFICHER</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="pdf_emp">
            <property name="text">
             <string>PDF</string>
            </property>
@@ -1332,34 +1332,27 @@ QDateEdit::drop-down {
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
-            <widget class="QRadioButton" name="radioButton">
+            <widget class="QRadioButton" name="tri_salaire_emp">
              <property name="text">
               <string>Salaire</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="radioButton_2">
+            <widget class="QRadioButton" name="tri_type_emp">
              <property name="text">
               <string>type</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="radioButton_3">
+            <widget class="QRadioButton" name="tri_nom_emp">
              <property name="text">
               <string>Nom</string>
              </property>
             </widget>
            </item>
           </layout>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_4">
-           <property name="text">
-            <string>OK</string>
-           </property>
-          </widget>
          </item>
         </layout>
        </item>
@@ -1379,7 +1372,7 @@ QDateEdit::drop-down {
       <string>QUITTER</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_9">
+    <widget class="QPushButton" name="btn_chat_emp">
      <property name="geometry">
       <rect>
        <x>670</x>
@@ -1405,14 +1398,14 @@ QDateEdit::drop-down {
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="rech_emp">
           <property name="text">
            <string>Rechercher</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_5"/>
+         <widget class="QLineEdit" name="line_rech_emp"/>
         </item>
        </layout>
       </item>
@@ -1421,25 +1414,59 @@ QDateEdit::drop-down {
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>510</x>
-       <y>30</y>
-       <width>138</width>
-       <height>31</height>
+       <y>100</y>
+       <width>252</width>
+       <height>56</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <layout class="QVBoxLayout" name="verticalLayout_8">
       <item>
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>ID</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>ID:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBox_modif"/>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QComboBox" name="comboBox_modif"/>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>type de recherche:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBox_rech_emp">
+          <item>
+           <property name="text">
+            <string>salaire</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>type</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>nom</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>

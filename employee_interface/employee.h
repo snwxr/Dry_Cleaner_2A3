@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include "employe.h"
+#include "serverwindow.h"
+#include "chatwindow.h"
 
 namespace Ui {
 class Employee;
@@ -26,9 +28,31 @@ private slots:
 
     void on_btn_modif_clicked();
 
+    void on_pdf_emp_clicked();
+
+    void on_tri_salaire_emp_clicked();
+
+    void on_tri_type_emp_clicked();
+    
+    void on_tri_nom_emp_clicked();
+    
+
+
+    void on_tout_afficher_emp_clicked();
+
+    void on_rech_emp_clicked();
+
+
+
+    void on_btn_chat_emp_clicked();
+
+
+
 private:
     Ui::Employee *ui;
     employe etmp;
+    ServerWindow *s;
+    ChatWindow *c;
 };
 
 #endif // EMPLOYEE_H

@@ -35,6 +35,13 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int i);
     bool modifier(int i);
+
+    //Metiers
+    QSqlQueryModel * afficher_tri_salaire();
+    QSqlQueryModel * afficher_tri_type();
+    QSqlQueryModel * afficher_tri_nom();
+    QSqlQueryModel * afficher_rech_emp(QString critere,QString val);
+    QSqlQueryModel * afficher_rech_emp(int val);
 };
 
 #endif // EMPLOYE_H

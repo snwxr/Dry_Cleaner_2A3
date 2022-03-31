@@ -71,3 +71,76 @@ bool employe::modifier(int i)
 
     return query.exec();//exec() envoie la requete pour l'executer
 }
+
+QSqlQueryModel * employe::afficher_tri_salaire()
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+    model->setQuery("select * from employees order by salaire");
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Prenom"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Nom"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("Salaire"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Type"));
+
+    return model;
+}
+
+QSqlQueryModel * employe::afficher_tri_type()
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+    model->setQuery("select * from employees order by type_e");
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Prenom"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Nom"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("Salaire"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Type"));
+
+    return model;
+}
+
+QSqlQueryModel * employe::afficher_tri_nom()
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+    model->setQuery("select * from employees order by nom");
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Prenom"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Nom"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("Salaire"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Type"));
+
+    return model;
+}
+
+QSqlQueryModel * employe::afficher_rech_emp(QString critere,QString val)
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+
+    if(critere == "nom")
+       model->setQuery("select * from employees where nom='"+val+"'");
+    if(critere == "type")
+       model->setQuery("select * from employees where type_e='"+val+"'");
+
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Prenom"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Nom"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("Salaire"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Type"));
+
+    return model;
+}
+
+QSqlQueryModel * employe::afficher_rech_emp(int val)
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+    QString res = QString::number(val);
+
+       model->setQuery("select * from employees where salaire='"+res+"'");
+
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Prenom"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Nom"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("Salaire"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Type"));
+
+    return model;
+}

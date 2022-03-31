@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql printsupport network widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,17 +20,30 @@ SOURCES += \
     employe.cpp \
     employee.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    chatserver.cpp \
+    serverwindow.cpp \
+    serverworker.cpp \
+    chatclient.cpp \
+    chatwindow.cpp \
+
 
 HEADERS += \
     connection.h \
     employe.h \
     employee.h \
-    mainwindow.h
+    mainwindow.h \
+    chatserver.h \
+    serverwindow.h \
+    serverworker.h \
+    chatclient.h \
+    chatwindow.h
 
 FORMS += \
     employee.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    serverwindow.ui \
+    chatwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
