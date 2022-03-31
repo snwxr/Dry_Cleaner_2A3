@@ -39,6 +39,7 @@ public:
     bool modifierClient(int, QString, QString, QString, QString);
     QSqlQueryModel * Tri(int);
     QSqlQueryModel * recherche(QString);
+    void CalculReduction();
 
 };
 

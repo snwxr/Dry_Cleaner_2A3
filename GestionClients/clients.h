@@ -9,7 +9,7 @@
 #include<QSqlQuery>
 #include<QSqlQueryModel>
 #include "gclients.h"
-
+#include "statistiques.h"
 
 namespace Ui {
 class Clients;
@@ -37,9 +37,39 @@ private slots:
 
     void on_pushButton_Search_clicked();
 
+    void on_tableView_activated(const QModelIndex &index);
+
+    void on_pushButton_Stats_clicked();
+
+    void on_pushButton_StatsNB_clicked();
+
+    void on_pushButton_Quit_clicked();
+
+    void on_pushButton_Quit_2_clicked();
+
+    void on_pushButton_print_clicked();
+
+//****************Calculator**************************
+private slots :
+    void NumPressed();
+    void MathButtonPressed();
+    void EqualButtonPressed();
+    void ChangeNumberSign();
+    //void clearPressed();
+    void on_Clear_clicked();
+
+    void on_memAdd_released();
+
+    void on_memClear_clicked();
+
+    void on_memGet_released();
+
+    void on_pushButton_released();
+
 private:
     Ui::Clients *ui;
     Gclients Etmp;
+    statistiques *dial;
 
 };
 

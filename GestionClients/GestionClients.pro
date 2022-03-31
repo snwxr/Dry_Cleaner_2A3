@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql charts printsupport widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,17 +20,20 @@ SOURCES += \
     connection.cpp \
     gclients.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    statistiques.cpp
 
 HEADERS += \
     clients.h \
     connection.h \
     gclients.h \
-    mainwindow.h
+    mainwindow.h \
+    statistiques.h
 
 FORMS += \
     clients.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    statistiques.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

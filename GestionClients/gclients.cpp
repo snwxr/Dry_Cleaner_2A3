@@ -44,17 +44,17 @@ bool Gclients::supprimerClient(int cinn)
 
 bool Gclients::modifierClient(int cinnn, QString nom, QString prenom, QString sexe, QString date)
 {
-    QSqlQuery query,query1; //nasn3ou l requette
+    QSqlQuery query; //nasn3ou l requette
     QString res = QString::number(cinnn); //nahdhru les attribut li f wst requette yabdw kol string
 
     //cas ou form vide
-    if(nom.isEmpty())
-    {
-        QSqlQuery query1("select nom_c from clients where cin = ?");
-        query1.bindValue(0, res);
-        query.first();
-        nom=query1.value(0).toString();
-    }
+    //if(nom.isEmpty())
+    //{
+        //QSqlQuery query1("select nom_c from clients where cin = :cin");
+        //query1.bindValue(":cin", res);
+        //query.first();
+        //nom=query1.value(0).toString();
+    //}
 
     //if(prenom.isEmpty())
     //{
@@ -102,7 +102,7 @@ QSqlQueryModel * Gclients::Tri(int index)
 QSqlQueryModel * Gclients::recherche(QString res)
 {
     QSqlQueryModel *model=new QSqlQueryModel();
-    model->setQuery("SELECT * FROM clients where cin like '"+res+"%'");
+    model->setQuery("SELECT * FROM clients where cin like '%"+res+"%'");
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("CIN"));
     model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOM"));
     model->setHeaderData(2,Qt::Horizontal,QObject::tr("PRENOM"));
@@ -111,5 +111,25 @@ QSqlQueryModel * Gclients::recherche(QString res)
     model->setHeaderData(5,Qt::Horizontal,QObject::tr("DATE AJOUT"));
     model->setHeaderData(6,Qt::Horizontal,QObject::tr("REDUCTION"));
     return model;
+}
+void Gclients::CalculReduction()
+{
+    QSqlQuery query,quer; //nasn3ou l requette
+    quer.prepare("SELECT * FROM clients WHERE (EXTRACT(year FROM DATE_AJOUT)<2022)");
+    bool test=quer.exec();
+    if(test)
+    {
+        QMessageBox::information(nullptr,QObject::tr("OK"),
+                QObject::tr("L'acces à la reduction est à jour\n"
+                            "Click Canel To exist."), QMessageBox::Cancel);
+    }
+    while (quer.next())
+    {
+    QString cin=quer.value(0).toString();
+    query.prepare("update clients set REDUCTION_C='Accesible' where cin = :cin");
+    query.bindValue(":cin",cin);
+    query.exec();
+    }
+
 }
 
