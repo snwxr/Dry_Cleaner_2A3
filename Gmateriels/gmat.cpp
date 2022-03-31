@@ -168,7 +168,7 @@ void gmat::on_pdfmat_clicked()
 
                          out <<  "<html>\n"
 
-                                 "<img src='C:/Users/nouss/OneDrive/Documents/logo_drycleaner.png' height='120' width='120'/>"
+                                 "<img src='C:/Users/amine/Desktop/affiche/logo_drycleaner.jpg' height='120' width='120'/>"
 
                              "<head>\n"
 
