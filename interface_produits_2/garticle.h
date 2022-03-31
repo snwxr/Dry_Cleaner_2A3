@@ -24,6 +24,20 @@ private slots:
 
     void on_modif_article_clicked();
 
+    void on_pdfarticle_clicked();
+
+    void on_tri_num_art_clicked();
+
+    void on_tri_type_art_clicked();
+
+    void on_tri_etat_art_clicked();
+
+
+
+    void on_tot_afficher_art_clicked();
+
+    void on_btn_rech_art_clicked();
+
 private:
     Ui::garticle *ui;
     article atmp;

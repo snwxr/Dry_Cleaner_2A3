@@ -3,6 +3,12 @@
 #include "article.h"
 #include <QMessageBox>
 #include <QSqlError>
+#include <QtPrintSupport/QPrinter>
+#include <QFileDialog>
+#include <QTextDocument>
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QTextStream>
 
 garticle::garticle(QWidget *parent) :
     QDialog(parent),
@@ -120,4 +126,189 @@ void garticle::on_modif_article_clicked()
     }
     else
         QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Modification non effectue.\nClick cancel to exit"),QMessageBox::Cancel);
+}
+
+void garticle::on_pdfarticle_clicked()
+{
+    QSqlDatabase db;
+
+                        QTableView tablivraison;
+
+                        QSqlQueryModel * Modal=new  QSqlQueryModel();
+
+
+
+                        QSqlQuery qry;
+
+                         qry.prepare("SELECT * FROM articles ");
+
+                         qry.exec();
+
+                         Modal->setQuery(qry);
+
+                         tablivraison.setModel(Modal);
+
+
+
+                         db.close();
+
+
+
+                         QString strStream;
+
+                         QTextStream out(&strStream);
+
+
+
+                         const int rowCount = tablivraison.model()->rowCount();
+
+                         const int columnCount =  tablivraison.model()->columnCount();
+
+
+
+                         const QString strTitle ="Document";
+
+
+
+
+
+                         out <<  "<html>\n"
+
+                                 "<img src='C:/Users/nouss/OneDrive/Documents/logo_drycleaner.png' height='120' width='120'/>"
+
+                             "<head>\n"
+
+                                 "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+
+                             <<  QString("<title>%1</title>\n").arg(strTitle)
+
+                             <<  "</head>\n"
+
+                             "<body bgcolor=#ffffff link=#5000A0>\n"
+
+                            << QString("<h3 style=\" font-size: 50px; font-family: Arial, Helvetica, sans-serif; color: #e80e32; font-weight: lighter; text-align: center;\">%1</h3>\n").arg("Liste des Articles")
+
+                            <<"<br>"
+
+
+
+                            <<"<table border=1 cellspacing=0 cellpadding=2 width=\"100%\">\n";
+
+                         out << "<thead><tr bgcolor=#f0f0f0>";
+
+                         for (int column = 0; column < columnCount; column++)
+
+                             if (!tablivraison.isColumnHidden(column))
+
+                                 out << QString("<th>%1</th>").arg(tablivraison.model()->headerData(column, Qt::Horizontal).toString());
+
+                         out << "</tr></thead>\n";
+
+
+
+                         for (int row = 0; row < rowCount; row++) {
+
+                             out << "<tr>";
+
+                             for (int column = 0; column < columnCount; column++) {
+
+                                 if (!tablivraison.isColumnHidden(column)) {
+
+                                     QString data = tablivraison.model()->data(tablivraison.model()->index(row, column)).toString().simplified();
+
+                                     out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+
+                                 }
+
+                             }
+
+                             out << "</tr>\n";
+
+                         }
+
+                         out <<  "</table>\n"
+
+                                 "<br><br>"
+
+                                 <<"<br>"
+
+                                 <<"<table border=1 cellspacing=0 cellpadding=2>\n";
+
+
+
+
+
+                             out << "<thead><tr bgcolor=#f0f0f0>";
+
+
+
+                                 out <<  "</table>\n"
+
+
+
+                             "</body>\n"
+
+                             "</html>\n";
+
+
+
+                         QTextDocument *document = new QTextDocument();
+
+                         document->setHtml(strStream);
+
+
+
+                         QPrinter printer;
+
+                         QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
+
+                         if (dialog->exec() == QDialog::Accepted) {
+
+
+
+                             document->print(&printer);
+
+                         }
+
+
+
+                         printer.setOutputFormat(QPrinter::PdfFormat);
+
+                         printer.setPaperSize(QPrinter::A4);
+
+                         printer.setOutputFileName("/tmp/articles.pdf");
+
+                         printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+
+
+
+                         delete document;
+}
+
+void garticle::on_tri_num_art_clicked()
+{
+    ui->tab_art->setModel(atmp.afficher_tri_num_art());
+}
+
+void garticle::on_tri_type_art_clicked()
+{
+    ui->tab_art->setModel(atmp.afficher_tri_type_art());
+}
+
+void garticle::on_tri_etat_art_clicked()
+{
+    ui->tab_art->setModel(atmp.afficher_tri_etat_art());
+}
+
+void garticle::on_tot_afficher_art_clicked()
+{
+    ui->tab_art->setModel(atmp.afficher());
+}
+
+void garticle::on_btn_rech_art_clicked()
+{
+    if(ui->combo_rech_art->currentText() == "type" || ui->combo_rech_art->currentText() == "etat")
+    ui->tab_art->setModel(atmp.afficher_rech_art(ui->combo_rech_art->currentText(),ui->line_rech_art->text()));
+    if(ui->combo_rech_art->currentText() == "num")
+        ui->tab_art->setModel(atmp.afficher_rech_art(ui->combo_rech_art->currentText(),ui->line_rech_art->text().toInt()));
 }

@@ -36,6 +36,11 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int);
     bool modifier(int i);
+    QSqlQueryModel * afficher_tri_num_art();
+    QSqlQueryModel * afficher_tri_type_art();
+    QSqlQueryModel * afficher_tri_etat_art();
+    QSqlQueryModel * afficher_rech_art(QString critere,QString val);
+    QSqlQueryModel * afficher_rech_art(QString critere,int val);
 };
 
 #endif // ARTICLE_H

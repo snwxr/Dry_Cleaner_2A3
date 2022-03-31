@@ -85,3 +85,93 @@ bool article::modifier(int i)
 
     return query.exec();//exec() envoie la requete pour l'executer
 }
+
+QSqlQueryModel * article::afficher_tri_num_art()
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+
+    model->setQuery("select * from articles order by num_prod");
+
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Num"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Etat"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("Date_Recu"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Date_env"));
+    model->setHeaderData(5,Qt::Horizontal,QObject::tr("photo"));
+    model->setHeaderData(6,Qt::Horizontal,QObject::tr("client"));
+
+    return model;
+}
+
+QSqlQueryModel * article::afficher_tri_type_art()
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+
+    model->setQuery("select * from articles order by type_prod");
+
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Num"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Etat"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("Date_Recu"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Date_env"));
+    model->setHeaderData(5,Qt::Horizontal,QObject::tr("photo"));
+    model->setHeaderData(6,Qt::Horizontal,QObject::tr("client"));
+
+    return model;
+}
+
+QSqlQueryModel * article::afficher_tri_etat_art()
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+
+    model->setQuery("select * from articles order by etat_prod");
+
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Num"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Etat"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("Date_Recu"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Date_env"));
+    model->setHeaderData(5,Qt::Horizontal,QObject::tr("photo"));
+    model->setHeaderData(6,Qt::Horizontal,QObject::tr("client"));
+
+    return model;
+}
+
+QSqlQueryModel * article::afficher_rech_art(QString critere,QString val)
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+    if(critere == "type"){
+        model->setQuery("select * from articles where type_prod='"+val+"'");
+    }
+
+    if(critere == "etat"){
+        model->setQuery("select * from articles where etat_prod='"+val+"'");
+    }
+
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Num"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Etat"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("Date_Recu"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Date_env"));
+    model->setHeaderData(5,Qt::Horizontal,QObject::tr("photo"));
+    model->setHeaderData(6,Qt::Horizontal,QObject::tr("client"));
+
+    return model;
+}
+
+QSqlQueryModel * article::afficher_rech_art(QString critere,int val)
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+    QString num = QString::number(val);
+    model->setQuery("select * from articles where num_prod='"+num+"'");
+
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Num"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Etat"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("Date_Recu"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("Date_env"));
+    model->setHeaderData(5,Qt::Horizontal,QObject::tr("photo"));
+    model->setHeaderData(6,Qt::Horizontal,QObject::tr("client"));
+
+    return model;
+}

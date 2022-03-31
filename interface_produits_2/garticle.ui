@@ -25,7 +25,7 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>30</x>
       <y>20</y>
       <width>761</width>
       <height>531</height>
@@ -1339,24 +1339,24 @@ QDateEdit::drop-down {
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>50</y>
-         <width>241</width>
-         <height>72</height>
+         <x>10</x>
+         <y>30</y>
+         <width>301</width>
+         <height>101</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QPushButton" name="pushButton_8">
+           <widget class="QPushButton" name="tot_afficher_art">
             <property name="text">
              <string>tout montrer</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_7">
+           <widget class="QPushButton" name="pdfarticle">
             <property name="text">
              <string>imprimer</string>
             </property>
@@ -1369,34 +1369,27 @@ QDateEdit::drop-down {
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
-             <widget class="QRadioButton" name="radioButton_3">
+             <widget class="QRadioButton" name="tri_num_art">
               <property name="text">
                <string>num</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton">
+             <widget class="QRadioButton" name="tri_type_art">
               <property name="text">
                <string>type</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_2">
+             <widget class="QRadioButton" name="tri_etat_art">
               <property name="text">
                <string>etat</string>
               </property>
              </widget>
             </item>
            </layout>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_9">
-            <property name="text">
-             <string>ok</string>
-            </property>
-           </widget>
           </item>
          </layout>
         </item>
@@ -1416,14 +1409,14 @@ QDateEdit::drop-down {
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="btn_rech_art">
            <property name="text">
             <string>rechercher</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_3"/>
+          <widget class="QLineEdit" name="line_rech_art"/>
          </item>
         </layout>
        </item>
@@ -2555,22 +2548,56 @@ QDateEdit::drop-down {
      <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>30</y>
-        <width>196</width>
-        <height>22</height>
+        <x>400</x>
+        <y>20</y>
+        <width>230</width>
+        <height>52</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_12">
+      <layout class="QVBoxLayout" name="verticalLayout_8">
        <item>
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>Num Produit</string>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>Num Produit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_modif_prod"/>
+         </item>
+        </layout>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox_modif_prod"/>
+        <layout class="QHBoxLayout" name="horizontalLayout_13">
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>type de recherche</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_rech_art">
+           <item>
+            <property name="text">
+             <string>num</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>type</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>etat</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
