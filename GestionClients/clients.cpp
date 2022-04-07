@@ -171,11 +171,7 @@ void Clients::on_pushButton_OK_clicked()
     ui->tableView->setModel(Etmp.Tri(index));
 }
 
-void Clients::on_pushButton_Search_clicked()
-{
-    QString res=ui->lineEdit_SearchBar->text();
-    ui->tableView->setModel(Etmp.recherche(res));
-}
+
 
 void Clients::on_tableView_activated(const QModelIndex &index)
 {
@@ -246,6 +242,14 @@ void Clients::on_pushButton_print_clicked()
                           painter.drawText(4300,3300,"DATE NAISSANCE");
                           painter.drawText(6000,3300,"DATE AJOUT");
                           painter.drawText(7800,3300,"ACCES REDUCTION");
+
+                           QSqlQuery Qd;
+                           Qd.prepare("SELECT TO_CHAR(SYSDATE, 'MM-DD-YYYY HH24:MI:SS') FROM dual");
+                           Qd.exec();
+                           QString date;
+                           while(Qd.next())
+                           date = Qd.value(0).toString();
+                           painter.drawText(300,50,date);
 
 
                           //painter.setBackground(Qt::darkCyan);
@@ -430,4 +434,10 @@ void Clients::on_pushButton_released()
 
     // Put solution in display
     ui->Display->setText(QString::number(ApresReduction));
+}
+
+void Clients::on_lineEdit_SearchBar_textChanged(const QString &arg1)
+{
+    QString res=ui->lineEdit_SearchBar->text();
+    ui->tableView->setModel(Etmp.recherche(res));
 }

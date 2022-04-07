@@ -22,18 +22,17 @@ void statistiques::start_stat()
     q2.exec();
     q3.prepare("SELECT * FROM clients WHERE sexe_c='Man'");
     q3.exec();
-    //q4.prepare("SELECT * FROM clients WHERE categorie='FAMILLE' ");
-    //q4.exec();*/
+
 
     while (q1.next()){tot++;}
     while (q2.next()){c1++;}
     while (q3.next()){c2++;}
-   // while (q4.next()){c3++;}
+
 
 
     c1=c1/tot;
     c2=c2/tot;
-    //c3=c3/tot;
+
     // Assign names to the set of bars used
             QBarSet *set0 = new QBarSet("Femme");
             QBarSet *set1 = new QBarSet("Homme");
@@ -43,7 +42,7 @@ void statistiques::start_stat()
             // Assign values for each bar
             *set0 << c1;
             *set1 << c2;
-           // *set2 << c3;
+
             // Add all sets of data to the chart as a whole
             // 1. Bar Chart
             QBarSeries *series = new QBarSeries();

@@ -35,7 +35,7 @@ private slots:
 
     void on_pushButton_OK_clicked();
 
-    void on_pushButton_Search_clicked();
+    //void on_pushButton_Search_clicked();
 
     void on_tableView_activated(const QModelIndex &index);
 
@@ -65,6 +65,8 @@ private slots :
     void on_memGet_released();
 
     void on_pushButton_released();
+
+    void on_lineEdit_SearchBar_textChanged(const QString &arg1);
 
 private:
     Ui::Clients *ui;
