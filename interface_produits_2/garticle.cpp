@@ -9,6 +9,7 @@
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QTextStream>
+#include <QPixmap>
 
 garticle::garticle(QWidget *parent) :
     QDialog(parent),
@@ -16,6 +17,7 @@ garticle::garticle(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->tab_art->setModel(atmp.afficher());
+    popUp = new PopUp();
 }
 
 garticle::~garticle()
@@ -27,7 +29,7 @@ void garticle::on_ajout_article_clicked()
 {
     int num = ui->num_prod->text().toInt();
     int cin = ui->cin_client->text().toInt();
-    QString date = ui->date_env->date().toString();
+    QString date = ui->date_env->date().toString(Qt::ISODate);
     QString type = ui->type_prod->text();
     QString etat = ui->etat_prod->text();
     QString photo = ui->photo_prod->text();
@@ -46,7 +48,9 @@ void garticle::on_ajout_article_clicked()
         ui->photo_prod->clear();
         ui->cin_client->clear();
         ui->tab_art->setModel(atmp.afficher());
+
         QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Ajout effectue\nClick cancel to exit."),QMessageBox::Cancel);
+
     }else
         QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Ajout non effectue\nClick cancel to exit."),QMessageBox::Cancel);
 }
@@ -168,13 +172,14 @@ void garticle::on_pdfarticle_clicked()
 
                          const QString strTitle ="Document";
 
-
+                           QString d_info = QDateTime::currentDateTime().toString();
 
 
 
                          out <<  "<html>\n"
 
-                                 "<img src='C:/Users/nouss/OneDrive/Documents/logo_drycleaner.png' height='120' width='120'/>"
+                                 "<img src='C:/Users/USER/Downloads/1111.png' height='120' width='120'/>"
+                                 "<p style=\"text-align:right\">"+d_info+"</p>"
 
                              "<head>\n"
 
@@ -305,10 +310,87 @@ void garticle::on_tot_afficher_art_clicked()
     ui->tab_art->setModel(atmp.afficher());
 }
 
-void garticle::on_btn_rech_art_clicked()
+
+
+void garticle::on_line_rech_art_textChanged(const QString &arg1)
 {
-    if(ui->combo_rech_art->currentText() == "type" || ui->combo_rech_art->currentText() == "etat")
+
+    QString photo;
+
+    if(ui->combo_rech_art->currentText() == "type" || ui->combo_rech_art->currentText() == "etat"){
     ui->tab_art->setModel(atmp.afficher_rech_art(ui->combo_rech_art->currentText(),ui->line_rech_art->text()));
-    if(ui->combo_rech_art->currentText() == "num")
+    }
+    if(ui->combo_rech_art->currentText() == "num"){
+        int val = ui->line_rech_art->text().toInt();
+        QString num = QString::number(val);
         ui->tab_art->setModel(atmp.afficher_rech_art(ui->combo_rech_art->currentText(),ui->line_rech_art->text().toInt()));
+        QSqlQuery q;
+        q.prepare("select * from articles where num_prod like '%"+num+"%'");
+        q.exec();
+        while(q.next()){
+        photo = q.value(5).toString();
+        }
+        QPixmap p(photo);
+        ui->labelpic_art->setPixmap(p.scaled(100,100,Qt::KeepAspectRatio));
+    }
+
+}
+
+void garticle::on_notif_clicked()
+{
+    int num  = ui->line_rech_art->text().toInt();
+    QString res = QString::number(num);
+    QString date_env;
+    QString date_sys;
+    QString etat;
+    QStringList listd,listS;
+    QSqlQuery qrech;
+    QSqlQuery qsysd;
+
+    qrech.prepare("select * from articles where num_prod=:num");
+    qrech.bindValue(":num",res);
+    qsysd.prepare("select to_char(sysdate,'dd/mm/yyyy') from dual");
+    qsysd.exec();
+    qrech.exec();
+
+    while(qrech.next()){
+        date_env=qrech.value(4).toString();
+        etat = qrech.value(2).toString();
+    }
+
+    while(qsysd.next()){
+        date_sys = qsysd.value(0).toString();
+    }
+
+    listd = date_env.split("-");
+    listS = date_sys.split("/");
+    if(etat == "non traite")
+    {
+        if(listS[2].toInt() > listd[0].toInt())
+        {
+            popUp->setPopupText("non traite, vous etes renvoyé");
+            popUp->show();
+        }else{
+
+            if(listS[1].toInt() > listd[1].toInt())
+            {
+                popUp->setPopupText("non traite, vous etes en retard de quelques mois");
+                popUp->show();
+
+
+            }else{
+                if(listS[0].toInt() > listd[2].toInt())
+                {
+                    popUp->setPopupText("non traite, vous etes en retard de quelques jours");
+                    popUp->show();
+                }else{
+                    popUp->setPopupText("non traite, il vous reste du temps");
+                    popUp->show();
+                }
+            }
+        }
+    }else{
+        popUp->setPopupText("Bravo!!! Traite.");
+        popUp->show();
+    }
 }

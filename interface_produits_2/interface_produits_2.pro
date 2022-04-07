@@ -20,13 +20,15 @@ SOURCES += \
     connection.cpp \
     garticle.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    popup.cpp
 
 HEADERS += \
     article.h \
     connection.h \
     garticle.h \
-    mainwindow.h
+    mainwindow.h \
+    popup.h
 
 FORMS += \
     garticle.ui \

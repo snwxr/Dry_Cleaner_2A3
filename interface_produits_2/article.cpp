@@ -1,4 +1,7 @@
 #include "article.h"
+#include <QPixmap>
+#include "ui_garticle.h"
+#include "garticle.h"
 
 article::article()
 {
@@ -140,12 +143,14 @@ QSqlQueryModel * article::afficher_tri_etat_art()
 QSqlQueryModel * article::afficher_rech_art(QString critere,QString val)
 {
     QSqlQueryModel * model = new QSqlQueryModel();
+
+
     if(critere == "type"){
-        model->setQuery("select * from articles where type_prod='"+val+"'");
+        model->setQuery("select * from articles where type_prod LIKE '%"+val+"%'");
     }
 
     if(critere == "etat"){
-        model->setQuery("select * from articles where etat_prod='"+val+"'");
+        model->setQuery("select * from articles where etat_prod LIKE '%"+val+"%'");
     }
 
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("Num"));
@@ -156,6 +161,7 @@ QSqlQueryModel * article::afficher_rech_art(QString critere,QString val)
     model->setHeaderData(5,Qt::Horizontal,QObject::tr("photo"));
     model->setHeaderData(6,Qt::Horizontal,QObject::tr("client"));
 
+
     return model;
 }
 
@@ -163,7 +169,9 @@ QSqlQueryModel * article::afficher_rech_art(QString critere,int val)
 {
     QSqlQueryModel * model = new QSqlQueryModel();
     QString num = QString::number(val);
-    model->setQuery("select * from articles where num_prod='"+num+"'");
+
+    model->setQuery("select * from articles where num_prod LIKE'%"+num+"%'");
+
 
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("Num"));
     model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));

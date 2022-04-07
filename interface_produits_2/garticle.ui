@@ -25,7 +25,7 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>10</x>
       <y>20</y>
       <width>761</width>
       <height>531</height>
@@ -1158,9 +1158,9 @@ QDateEdit::drop-down {
       <property name="geometry">
        <rect>
         <x>390</x>
-        <y>90</y>
+        <y>200</y>
         <width>321</width>
-        <height>411</height>
+        <height>301</height>
        </rect>
       </property>
       <property name="title">
@@ -1169,10 +1169,10 @@ QDateEdit::drop-down {
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>10</x>
          <y>40</y>
          <width>291</width>
-         <height>361</height>
+         <height>241</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1314,8 +1314,8 @@ QDateEdit::drop-down {
      <widget class="QPushButton" name="pushButton_2">
       <property name="geometry">
        <rect>
-        <x>640</x>
-        <y>20</y>
+        <x>650</x>
+        <y>10</y>
         <width>101</width>
         <height>51</height>
        </rect>
@@ -2545,11 +2545,11 @@ QDateEdit::drop-down {
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>20</y>
+        <x>390</x>
+        <y>10</y>
         <width>230</width>
         <height>52</height>
        </rect>
@@ -2600,6 +2600,32 @@ QDateEdit::drop-down {
         </layout>
        </item>
       </layout>
+     </widget>
+     <widget class="QLabel" name="labelpic_art">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>90</y>
+        <width>231</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="notif">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>70</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Verifier Validite</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">

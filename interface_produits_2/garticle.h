@@ -2,7 +2,7 @@
 #define GARTICLE_H
 #include "article.h"
 #include <QDialog>
-
+#include "popup.h"
 namespace Ui {
 class garticle;
 }
@@ -36,11 +36,16 @@ private slots:
 
     void on_tot_afficher_art_clicked();
 
-    void on_btn_rech_art_clicked();
+
+
+    void on_line_rech_art_textChanged(const QString &arg1);
+
+    void on_notif_clicked();
 
 private:
     Ui::garticle *ui;
     article atmp;
+    PopUp *popUp;
 };
 
 #endif // GARTICLE_H
