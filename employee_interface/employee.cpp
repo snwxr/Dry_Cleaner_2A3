@@ -10,9 +10,14 @@
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QTextStream>
+#include <QDateTime>
 #include "chatserver.h"
 #include "serverworker.h"
 #include "serverwindow.h"
+#include "mainwindow.h"
+#include "chatwindow.h"
+
+MainWindow *w;
 
 Employee::Employee(QWidget *parent) :
     QDialog(parent),
@@ -26,8 +31,6 @@ Employee::~Employee()
 {
     delete ui;
 }
-
-
 
 void Employee::on_btn_ajout_clicked()
 {
@@ -55,10 +58,10 @@ void Employee::on_btn_ajout_clicked()
         ui->line_salaire->clear();
         ui->combo_type->setCurrentIndex(0);
         ui->tableView->setModel(etmp.afficher());
-        QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Ajout effectue.\nClick ok to exit"));
+        ui->label_info->setText("Ajout effectue.");
     }
     else
-        QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Ajout non effectue.\nClick ok to exit"));
+        ui->label_info->setText("Ajout non effectue.");
 }
 
 void Employee::on_btn_sup_clicked()
@@ -78,14 +81,15 @@ void Employee::on_btn_sup_clicked()
             ui->line_salaire->clear();
             ui->combo_type->setCurrentIndex(0);
             ui->tableView->setModel(etmp.afficher());
-            QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Suppression effectuee.\nClick ok to exit"));
+            ui->label_info->setText("Suppression effectuee.");
         }
         else
-            QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Suppression non effectuee.Erreur de requete SQL.\nClick ok to exit"));
+            ui->label_info->setText("Suppression non effectuee.Erreur de requete SQL.");
     }
     else
     {
-        QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Suppression non effectuee. Erreur ID n'existe pas.\nClick ok to exit"));
+        ui->tableView->setModel(etmp.afficher());
+        ui->label_info->setText("Suppression non effectuee. Erreur ID n'existe pas.");
     }
 
 }
@@ -136,31 +140,31 @@ void Employee::on_btn_modif_clicked()
         ui->line_salaire->clear();
         ui->combo_type->setCurrentIndex(0);
         ui->tableView->setModel(etmp.afficher());
-        QMessageBox::information(nullptr,QObject::tr("OK"),QObject::tr("Modification effectue.\nClick ok to exit"));
+        ui->label_info->setText("Modification effectue.");
     }
     else
-        QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Modification non effectue.\nClick ok to exit"));
+    ui->label_info->setText("Modification non effectue.");
 }
 
 void Employee::on_pdf_emp_clicked()
 {
     QSqlDatabase db;
 
-                    QTableView tablivraison;
+                    QTableView tabemploye;
 
-                    QSqlQueryModel * Modal=new  QSqlQueryModel();
+                    Modal =new  QSqlQueryModel();
 
 
 
                     QSqlQuery qry;
-
+                    QString d_info = QDateTime::currentDateTime().toString();
                      qry.prepare("SELECT * FROM employees ");
 
                      qry.exec();
 
                      Modal->setQuery(qry);
 
-                     tablivraison.setModel(Modal);
+                     tabemploye.setModel(Modal);
 
 
 
@@ -174,9 +178,9 @@ void Employee::on_pdf_emp_clicked()
 
 
 
-                     const int rowCount = tablivraison.model()->rowCount();
+                     const int rowCount = tabemploye.model()->rowCount();
 
-                     const int columnCount =  tablivraison.model()->columnCount();
+                     const int columnCount =  tabemploye.model()->columnCount();
 
 
 
@@ -189,6 +193,7 @@ void Employee::on_pdf_emp_clicked()
                      out <<  "<html>\n"
 
                              "<img src='C:/Users/nouss/OneDrive/Documents/logo_drycleaner.png' height='120' width='120'/>"
+                              "<p style=\"text-align:right\">"+d_info+"</p>"
 
                          "<head>\n"
 
@@ -212,9 +217,9 @@ void Employee::on_pdf_emp_clicked()
 
                      for (int column = 0; column < columnCount; column++)
 
-                         if (!tablivraison.isColumnHidden(column))
+                         if (!tabemploye.isColumnHidden(column))
 
-                             out << QString("<th>%1</th>").arg(tablivraison.model()->headerData(column, Qt::Horizontal).toString());
+                             out << QString("<th>%1</th>").arg(tabemploye.model()->headerData(column, Qt::Horizontal).toString());
 
                      out << "</tr></thead>\n";
 
@@ -226,9 +231,9 @@ void Employee::on_pdf_emp_clicked()
 
                          for (int column = 0; column < columnCount; column++) {
 
-                             if (!tablivraison.isColumnHidden(column)) {
+                             if (!tabemploye.isColumnHidden(column)) {
 
-                                 QString data = tablivraison.model()->data(tablivraison.model()->index(row, column)).toString().simplified();
+                                 QString data = tabemploye.model()->data(tabemploye.model()->index(row, column)).toString().simplified();
 
                                  out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
 
@@ -266,7 +271,7 @@ void Employee::on_pdf_emp_clicked()
 
 
 
-                     QTextDocument *document = new QTextDocument();
+                     document = new QTextDocument();
 
                      document->setHtml(strStream);
 
@@ -274,15 +279,15 @@ void Employee::on_pdf_emp_clicked()
 
                      QPrinter printer;
 
-                     QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
+                     dialog = new QPrintDialog(&printer, NULL);
 
-                     if (dialog->exec() == QDialog::Accepted) {
+
 
 
 
                          document->print(&printer);
 
-                     }
+
 
 
 
@@ -321,21 +326,25 @@ void Employee::on_tout_afficher_emp_clicked()
     ui->tableView->setModel(etmp.afficher());
 }
 
-void Employee::on_rech_emp_clicked()
-{
-    if(ui->comboBox_rech_emp->currentText() == "nom" || ui->comboBox_rech_emp->currentText() == "type")
-        ui->tableView->setModel(etmp.afficher_rech_emp(ui->comboBox_rech_emp->currentText(),ui->line_rech_emp->text()));
-    if(ui->comboBox_rech_emp->currentText() == "salaire")
-        ui->tableView->setModel(etmp.afficher_rech_emp(ui->line_rech_emp->text().toInt()));
-}
-
-
-
-
 void Employee::on_btn_chat_emp_clicked()
 {
     s = new ServerWindow(this);
     s->show();
     c = new ChatWindow(this);
     c->show();
+}
+
+void Employee::on_line_rech_emp_textChanged(const QString &arg1)
+{
+    if(ui->comboBox_rech_emp->currentText() == "nom" || ui->comboBox_rech_emp->currentText() == "type")
+        ui->tableView->setModel(etmp.afficher_rech_emp(ui->comboBox_rech_emp->currentText(),ui->line_rech_emp->text()));
+    if(ui->comboBox_rech_emp->currentText() == "salaire ou id")
+        ui->tableView->setModel(etmp.afficher_rech_emp(ui->line_rech_emp->text().toInt()));
+}
+
+void Employee::on_quitter_emp_clicked()
+{
+    hide();
+    w = new MainWindow(this);
+    w->show();
 }

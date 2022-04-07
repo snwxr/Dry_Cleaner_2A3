@@ -1,7 +1,16 @@
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 
-#include <QDialog>
+#include <QWidget>
+#include <QMessageBox>
+#include <QLineEdit>
+#include <QtPrintSupport/QPrinter>
+#include <QFileDialog>
+#include <QTextDocument>
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QTextStream>
+#include <QDateTime>
 #include "employe.h"
 #include "serverwindow.h"
 #include "chatwindow.h"
@@ -40,7 +49,6 @@ private slots:
 
     void on_tout_afficher_emp_clicked();
 
-    void on_rech_emp_clicked();
 
 
 
@@ -48,11 +56,20 @@ private slots:
 
 
 
+    void on_line_rech_emp_textChanged(const QString &arg1);
+
+
+
+    void on_quitter_emp_clicked();
+
 private:
     Ui::Employee *ui;
     employe etmp;
     ServerWindow *s;
     ChatWindow *c;
+    QSqlQueryModel * Modal;
+    QPrintDialog *dialog;
+    QTextDocument *document;
 };
 
 #endif // EMPLOYEE_H

@@ -5,7 +5,7 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QHostAddress>
-ChatWindow::ChatWindow(QDialog *parent)
+ChatWindow::ChatWindow(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::ChatWindow) // create the elements defined in the .ui file
     , m_chatClient(new ChatClient(this)) // create the chat client

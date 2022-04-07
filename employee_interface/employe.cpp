@@ -116,9 +116,9 @@ QSqlQueryModel * employe::afficher_rech_emp(QString critere,QString val)
     QSqlQueryModel * model = new QSqlQueryModel();
 
     if(critere == "nom")
-       model->setQuery("select * from employees where nom='"+val+"'");
+       model->setQuery("select * from employees where nom like '%"+val+"%'");
     if(critere == "type")
-       model->setQuery("select * from employees where type_e='"+val+"'");
+       model->setQuery("select * from employees where type_e like '%"+val+"%'");
 
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
     model->setHeaderData(1,Qt::Horizontal,QObject::tr("Prenom"));
@@ -134,7 +134,7 @@ QSqlQueryModel * employe::afficher_rech_emp(int val)
     QSqlQueryModel * model = new QSqlQueryModel();
     QString res = QString::number(val);
 
-       model->setQuery("select * from employees where salaire='"+res+"'");
+       model->setQuery("select * from employees where salaire like '%"+res+"%' or id like '%"+res+"%'");
 
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
     model->setHeaderData(1,Qt::Horizontal,QObject::tr("Prenom"));

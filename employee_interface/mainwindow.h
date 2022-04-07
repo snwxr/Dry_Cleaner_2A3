@@ -16,10 +16,19 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_signin_clicked();
+
+    void on_signup_clicked();
+
+    void on_remove_user_clicked();
+
+    void on_show_users_clicked();
+
+    void on_modifier_user_clicked();
 
 private:
     Ui::MainWindow *ui;
     Employee *e;
+    QSqlQueryModel * afficher();
 };
 #endif // MAINWINDOW_H

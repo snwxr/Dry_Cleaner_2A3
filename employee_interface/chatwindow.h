@@ -12,7 +12,7 @@ class ChatWindow : public QDialog
     Q_OBJECT
     Q_DISABLE_COPY(ChatWindow)
 public:
-    explicit ChatWindow(QDialog *parent = nullptr);
+    explicit ChatWindow(QWidget *parent = nullptr);
     ~ChatWindow();
 private:
     Ui::ChatWindow *ui;
