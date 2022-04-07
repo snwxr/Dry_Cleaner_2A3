@@ -17,6 +17,8 @@ public:
 
 private slots:
     void on_ajout_mat_clicked();
+    void sendMail();
+    void mailSent(QString status);
 
     void on_supp_mat_clicked();
 
@@ -25,6 +27,20 @@ private slots:
     void on_modif_mat_clicked();
 
     void on_pdfmat_clicked();
+
+    void on_line_rech_mat_textChanged(const QString &arg1);
+
+    void on_btn_tri_mat_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_push_email_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::gmat *ui;

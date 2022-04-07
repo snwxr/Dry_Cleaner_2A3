@@ -1,5 +1,6 @@
-QT       += core gui sql printsupport
-
+QT       += core gui sql printsupport \
+    quick
+QT       += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -18,19 +19,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     connection.cpp \
     gmat.cpp \
+    mailing.cpp \
     main.cpp \
     mainwindow.cpp \
-    materiels.cpp
+    materiels.cpp \
+
 
 HEADERS += \
     connection.h \
     gmat.h \
+    mailing.h \
     mainwindow.h \
-    materiels.h
+    materiels.h \
+
 
 FORMS += \
     gmat.ui \
-    mainwindow.ui
+    mainwindow.ui \
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

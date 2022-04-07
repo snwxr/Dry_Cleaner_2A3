@@ -32,6 +32,9 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int);
     bool modifier(int i);
+
+    QSqlQueryModel * recherche(QString recherche);
+    QSqlQueryModel * triParId();
 };
 
 #endif // MATERIELS_H

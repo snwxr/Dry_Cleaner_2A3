@@ -9,8 +9,10 @@
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QTextStream>
-
-
+#include <QDateTime>
+#include <qapplication.h>
+#include "smtp.h"
+#include "mailing.h"
 
 gmat::gmat(QWidget *parent) :
     QDialog(parent),
@@ -131,6 +133,9 @@ void gmat::on_pdfmat_clicked()
                         QSqlQueryModel * Modal=new  QSqlQueryModel();
 
 
+QSqlQuery qrt;
+
+qrt.prepare("SELECT TO_CHAR (SYSDATE, 'MM-DD-YYYY HH24:MI:SS') FROM dual");
 
                         QSqlQuery qry;
 
@@ -164,11 +169,14 @@ void gmat::on_pdfmat_clicked()
 
 
 
+  QString date= qrt.value(0).toString();
 
+QString d_info=QDateTime::currentDateTime().toString();
 
                          out <<  "<html>\n"
 
-                                 "<img src='C:/Users/amine/Desktop/affiche/logo_drycleaner.jpg' height='120' width='120'/>"
+                                 "<img src='C:/Users/aminee/Downloads/logo.png' height='120' width='120'/>"
+                             "<p style=\"text-align:right\">"+d_info+"</p>"
 
                              "<head>\n"
 
@@ -183,7 +191,8 @@ void gmat::on_pdfmat_clicked()
                             << QString("<h3 style=\" font-size: 50px; font-family: Arial, Helvetica, sans-serif; color: #e80e32; font-weight: lighter; text-align: center;\">%1</h3>\n").arg("Liste des materiels")
 
                             <<"<br>"
-
+                           << QString("<h3 style=\" font-size: 50px; font-family: Arial, Helvetica, sans-serif; color: black; font-weight: lighter; text-align: right;\">%1</h3>\n").arg(date)
+<<"<br>"
 
 
                             <<"<table border=1 cellspacing=0 cellpadding=2 width=\"100%\">\n";
@@ -278,3 +287,85 @@ void gmat::on_pdfmat_clicked()
 
                          delete document;
 }
+
+
+
+
+void gmat::on_line_rech_mat_textChanged(const QString &arg1)
+{
+     ui->tab_mat->setModel(mtmp.recherche(ui->line_rech_mat->text()));
+
+}
+
+void gmat::on_btn_tri_mat_clicked()
+{
+    ui->tab_mat->setModel(mtmp.triParId());
+}
+
+void gmat::on_pushButton_9_clicked()
+{{
+        QTableView *table;
+           table = ui->tab_mat;
+
+           QString filters("CSV files (.csv);;All files (.*)");
+           QString defaultFilter("CSV files (*.csv)");
+           QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+                              filters, &defaultFilter);
+           fileName.append(".csv");
+           QFile file(fileName);
+
+           QAbstractItemModel *model =  table->model();
+           if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+               QTextStream data(&file);
+               QStringList strList;
+               for (int i = 0; i < model->columnCount(); i++) {
+                   if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+                       strList.append("\"" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + "\"");
+                   else
+                       strList.append("");
+               }
+               data << strList.join(";") << "\n";
+               for (int i = 0; i < model->rowCount(); i++) {
+                   strList.clear();
+                   for (int j = 0; j < model->columnCount(); j++) {
+
+                       if (model->data(model->index(i, j)).toString().length() > 0)
+                           strList.append("\"" + model->data(model->index(i, j)).toString() + "\"");
+                       else
+                           strList.append("");
+                   }
+                   data << strList.join(";") + "\n";
+               }
+               file.close();
+               QMessageBox::information(this,"Exporter To Excel","Exporter En Excel Avec Succées ");
+           }
+}
+}
+
+void gmat::on_pushButton_4_clicked()
+{
+    qApp->exit();
+}
+
+
+void gmat::on_pushButton_clicked()
+{
+
+}
+
+/*void materiels::sendMail()
+{
+
+    Smtp* smtp = new Smtp(ui->uname->text(), ui->paswd->text(), ui->server->text(), ui->port->text().toInt());
+    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+
+    smtp->sendMail(ui->uname->text(), ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText());
+}
+
+void materiels::mailSent(QString status)
+{
+    if(status == "Message sent")
+        QMessageBox::warning( 0, tr( "Qt Simple SMTP client" ), tr( "Message sent!\n\n" ) );
+}
+*/

@@ -46,6 +46,30 @@ QSqlQueryModel * materiels::afficher()
 
     return model;
 }
+QSqlQueryModel * materiels::recherche(QString recherche)
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+    model->setQuery("SELECT * FROM materiels WHERE id_m LIKE '"+recherche+"%' OR nom_m LIKE '"+recherche+"%' OR type_m LIKE '"+recherche+"%'");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("NOM"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("TYPE"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("ETAT"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("GAMME"));
+    return model;
+}
+QSqlQueryModel * materiels::triParId()
+{
+    QSqlQueryModel * model=new QSqlQueryModel();
+    model->setQuery("SELECT * from materiels ORDER BY CAST(id_m AS number)");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("NOM"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("TYPE"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("ETAT"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("GAMME"));
+    return model;
+}
+
 
 bool materiels::supprimer(int id_m)
 {
