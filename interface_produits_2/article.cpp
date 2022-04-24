@@ -171,7 +171,9 @@ QSqlQueryModel * article::afficher_rech_art(QString critere,int val)
     QString num = QString::number(val);
 
     model->setQuery("select * from articles where num_prod LIKE'%"+num+"%'");
-
+    if(critere == "client"){
+        model->setQuery("select * from articles where cin_client LIKE '%"+num+"%'");
+    }
 
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("Num"));
     model->setHeaderData(1,Qt::Horizontal,QObject::tr("Type"));

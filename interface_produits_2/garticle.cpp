@@ -10,6 +10,9 @@
 #include <QPrintDialog>
 #include <QTextStream>
 #include <QPixmap>
+#include "arduino.h"
+
+Arduino *A;
 
 garticle::garticle(QWidget *parent) :
     QDialog(parent),
@@ -18,6 +21,17 @@ garticle::garticle(QWidget *parent) :
     ui->setupUi(this);
     ui->tab_art->setModel(atmp.afficher());
     popUp = new PopUp();
+    A = new Arduino();
+        int ret = A->connect_arduino();//lancer la connection a arduino
+        switch (ret) {
+        case 0:qDebug()<<"arduino is available and connected to: "<<A->get_arduino_portname();
+            break;
+        case 1:qDebug()<<"arduino is available but not connected to: "<<A->get_arduino_portname();
+            break;
+        case -1:qDebug()<<"arduino is not available";
+        }
+        QObject::connect(A->getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));//permet de lancer le slot
+        //le slot update_label suite a la reception du signal readyRead (reception des donnees).
 }
 
 garticle::~garticle()
@@ -320,13 +334,19 @@ void garticle::on_line_rech_art_textChanged(const QString &arg1)
     if(ui->combo_rech_art->currentText() == "type" || ui->combo_rech_art->currentText() == "etat"){
     ui->tab_art->setModel(atmp.afficher_rech_art(ui->combo_rech_art->currentText(),ui->line_rech_art->text()));
     }
-    if(ui->combo_rech_art->currentText() == "num"){
+    if(ui->combo_rech_art->currentText() == "num" || ui->combo_rech_art->currentText() == "client"){
         int val = ui->line_rech_art->text().toInt();
         QString num = QString::number(val);
         ui->tab_art->setModel(atmp.afficher_rech_art(ui->combo_rech_art->currentText(),ui->line_rech_art->text().toInt()));
         QSqlQuery q;
+        if(ui->combo_rech_art->currentText() == "num"){
         q.prepare("select * from articles where num_prod like '%"+num+"%'");
         q.exec();
+        }
+        if(ui->combo_rech_art->currentText() == "client"){
+        q.prepare("select * from articles where cin_client like '%"+num+"%'");
+        q.exec();
+        }
         while(q.next()){
         photo = q.value(5).toString();
         }
@@ -392,5 +412,47 @@ void garticle::on_notif_clicked()
     }else{
         popUp->setPopupText("Bravo!!! Traite.");
         popUp->show();
+    }
+}
+
+void garticle::update_label(){
+
+}
+
+void garticle::on_RFID_clicked()
+{
+     ui->line_rech_art->clear();
+     ui->cin_client->clear();
+    QString res;
+       QString code = QString(A->read_from_arduino());
+       QStringList lcode =code.split(QRegExp("\\W+"), QString::SkipEmptyParts);
+       for(int i=0;i<lcode.length();i++){
+        res+=lcode[i];
+       }
+    ui->line_rech_art->setText(res);
+    ui->cin_client->setText(res);
+}
+
+void garticle::on_open_clicked()
+{
+    QString photo,res;
+    if(ui->combo_rech_art->currentText() == "num" ){
+        int val = ui->line_rech_art->text().toInt();
+        QString num = QString::number(val);
+        ui->tab_art->setModel(atmp.afficher_rech_art(ui->combo_rech_art->currentText(),ui->line_rech_art->text().toInt()));
+        QSqlQuery q;
+        if(ui->combo_rech_art->currentText() == "num"){
+        q.prepare("select * from articles where num_prod like '%"+num+"%'");
+        q.exec();
+        }
+        while(q.next()){
+        photo = q.value(5).toString();
+        res =  q.value(0).toString();
+        }
+        if(res != ""){
+            A->write_to_arduino("1");
+        }
+        QPixmap p(photo);
+        ui->labelpic_art->setPixmap(p.scaled(100,100,Qt::KeepAspectRatio));
     }
 }

@@ -2587,6 +2587,11 @@ QDateEdit::drop-down {
            </item>
            <item>
             <property name="text">
+             <string>client</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
              <string>type</string>
             </property>
            </item>
@@ -2625,6 +2630,32 @@ QDateEdit::drop-down {
       </property>
       <property name="text">
        <string>Verifier Validite</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="RFID">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>120</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>RFID</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="open">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>170</y>
+        <width>101</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>open</string>
       </property>
      </widget>
     </widget>

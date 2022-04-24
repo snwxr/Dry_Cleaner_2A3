@@ -3,6 +3,7 @@
 #include "article.h"
 #include <QDialog>
 #include "popup.h"
+#include "arduino.h"
 namespace Ui {
 class garticle;
 }
@@ -41,11 +42,17 @@ private slots:
     void on_line_rech_art_textChanged(const QString &arg1);
 
     void on_notif_clicked();
+    void update_label();
+
+    void on_RFID_clicked();
+
+    void on_open_clicked();
 
 private:
     Ui::garticle *ui;
     article atmp;
     PopUp *popUp;
+    QByteArray data;
 };
 
 #endif // GARTICLE_H

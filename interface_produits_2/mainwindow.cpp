@@ -17,6 +17,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_next_clicked()
 {
-    garticle g;
-    g.exec();
+    hide();
+    g = new garticle(this);
+    g->show();
 }
