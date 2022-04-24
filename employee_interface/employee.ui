@@ -1132,7 +1132,7 @@ QDateEdit::drop-down {
 
 }</string>
   </property>
-  <widget class="QTabWidget" name="tabWidget">
+  <widget class="QTabWidget" name="tab_produits_2">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -2603,9 +2603,14 @@ QDateEdit::drop-down {
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab_2">
+   <widget class="QWidget" name="tab_produits">
     <attribute name="title">
-     <string>...</string>
+     <string>GProduits</string>
+    </attribute>
+   </widget>
+   <widget class="QWidget" name="tab_articles">
+    <attribute name="title">
+     <string>Garticles</string>
     </attribute>
    </widget>
   </widget>

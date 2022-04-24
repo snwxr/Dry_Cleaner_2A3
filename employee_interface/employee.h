@@ -62,6 +62,8 @@ private slots:
 
     void on_quitter_emp_clicked();
 
+    void on_tab_produits_2_currentChanged(int index);
+
 private:
     Ui::Employee *ui;
     employe etmp;

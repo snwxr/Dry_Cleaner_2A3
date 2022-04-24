@@ -16,8 +16,10 @@
 #include "serverwindow.h"
 #include "mainwindow.h"
 #include "chatwindow.h"
+#include "gproduits.h"
 
 MainWindow *w;
+Gproduits *g;
 
 Employee::Employee(QWidget *parent) :
     QDialog(parent),
@@ -347,4 +349,14 @@ void Employee::on_quitter_emp_clicked()
     hide();
     w = new MainWindow(this);
     w->show();
+}
+
+
+void Employee::on_tab_produits_2_currentChanged(int index)
+{
+    if(index == 1){
+        hide();
+        g = new Gproduits(this);
+        g->show();
+    }
 }

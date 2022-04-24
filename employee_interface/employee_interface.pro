@@ -26,7 +26,10 @@ SOURCES += \
     serverworker.cpp \
     chatclient.cpp \
     chatwindow.cpp \
-
+    command.cpp \
+    commande.cpp \
+    gproduits.cpp \
+    produit.cpp
 
 HEADERS += \
     connection.h \
@@ -37,13 +40,19 @@ HEADERS += \
     serverwindow.h \
     serverworker.h \
     chatclient.h \
-    chatwindow.h
+    chatwindow.h \
+    command.h \
+    commande.h \
+    gproduits.h \
+    produit.h
 
 FORMS += \
     employee.ui \
     mainwindow.ui \
     serverwindow.ui \
-    chatwindow.ui
+    chatwindow.ui \
+    command.ui \
+    gproduits.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
