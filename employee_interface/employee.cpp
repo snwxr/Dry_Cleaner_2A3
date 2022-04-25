@@ -17,9 +17,11 @@
 #include "mainwindow.h"
 #include "chatwindow.h"
 #include "gproduits.h"
+#include "garticle.h"
 
 MainWindow *w;
 Gproduits *g;
+garticle *a;
 
 Employee::Employee(QWidget *parent) :
     QDialog(parent),
@@ -358,5 +360,10 @@ void Employee::on_tab_produits_2_currentChanged(int index)
         hide();
         g = new Gproduits(this);
         g->show();
+    }
+    if(index == 2){
+        hide();
+        a = new garticle(this);
+        a->show();
     }
 }

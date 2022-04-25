@@ -34,7 +34,7 @@ void MainWindow::on_signin_clicked()
         ui->statusbar->showMessage("password is incorrect");
     if(username != username_line)
         ui->statusbar->showMessage("username is incorrect");
-    if(username == username_line && password == password_line)
+    if(username == username_line && password == password_line && username_line != "" && password_line != "")
     {
         hide();
         e = new Employee(this);

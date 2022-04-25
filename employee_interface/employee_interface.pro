@@ -30,7 +30,10 @@ SOURCES += \
     commande.cpp \
     gproduits.cpp \
     produit.cpp \
-    arduino.cpp
+    arduino.cpp \
+    article.cpp \
+    garticle.cpp \
+    popup.cpp
 
 HEADERS += \
     connection.h \
@@ -46,7 +49,10 @@ HEADERS += \
     commande.h \
     gproduits.h \
     produit.h \
-    arduino.h
+    arduino.h \
+    article.h \
+    garticle.h \
+    popup.h
 
 FORMS += \
     employee.ui \
@@ -54,7 +60,8 @@ FORMS += \
     serverwindow.ui \
     chatwindow.ui \
     command.ui \
-    gproduits.ui
+    gproduits.ui \
+    garticle.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

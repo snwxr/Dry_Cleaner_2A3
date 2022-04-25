@@ -23,6 +23,7 @@ private:
     QString arduino_port_name;
     bool arduino_is_available;
     QByteArray data;
+    QString type;
 };
 
 #endif // ARDUINO_H

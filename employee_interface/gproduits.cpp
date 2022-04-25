@@ -12,7 +12,7 @@
 #include <QPrintDialog>
 #include <QTextStream>
 #include <QDateTime>
-#include <employee.cpp>
+#include <employee.h>
 #include "command.h"
 #include "arduino.h"
 
