@@ -1,4 +1,4 @@
-QT       += core gui sql printsupport network widgets
+QT       += core gui sql printsupport network widgets serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -29,7 +29,8 @@ SOURCES += \
     command.cpp \
     commande.cpp \
     gproduits.cpp \
-    produit.cpp
+    produit.cpp \
+    arduino.cpp
 
 HEADERS += \
     connection.h \
@@ -44,7 +45,8 @@ HEADERS += \
     command.h \
     commande.h \
     gproduits.h \
-    produit.h
+    produit.h \
+    arduino.h
 
 FORMS += \
     employee.ui \

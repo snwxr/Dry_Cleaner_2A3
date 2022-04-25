@@ -1447,6 +1447,19 @@ QDateEdit::drop-down {
       </item>
      </layout>
     </widget>
+    <widget class="QPushButton" name="scan_code">
+     <property name="geometry">
+      <rect>
+       <x>660</x>
+       <y>10</y>
+       <width>93</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Scan</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_4">
     <attribute name="title">

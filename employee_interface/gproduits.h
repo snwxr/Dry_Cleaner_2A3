@@ -43,6 +43,10 @@ private slots:
 
     void on_tab_employee_2_currentChanged(int index);
 
+    void on_scan_code_clicked();
+
+    void update_label();
+
 private:
     Ui::Gproduits *ui;
     Produit ptmp;

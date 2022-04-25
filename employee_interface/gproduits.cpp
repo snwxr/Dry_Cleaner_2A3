@@ -12,17 +12,31 @@
 #include <QPrintDialog>
 #include <QTextStream>
 #include <QDateTime>
-#include <employee.h>
+#include <employee.cpp>
 #include "command.h"
+#include "arduino.h"
+
 Command *co;
 Employee *e1;
 MainWindow *w2;
+Arduino *A;
 Gproduits::Gproduits(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Gproduits)
 {
     ui->setupUi(this);
     ui->tabNetoy->setModel(ptmp.afficher());
+    A = new Arduino();
+    int ret = A->connect_arduino();//lancer la connection a arduino
+    switch (ret) {
+    case 0:qDebug()<<"arduino is available and connected to: "<<A->get_arduino_portname();
+        break;
+    case 1:qDebug()<<"arduino is available but not connected to: "<<A->get_arduino_portname();
+        break;
+    case -1:qDebug()<<"arduino is not available";
+    }
+    QObject::connect(A->getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));//permet de lancer le slot
+    //le slot update_label suite a la reception du signal readyRead (reception des donnees).
 }
 
 Gproduits::~Gproduits()
@@ -275,15 +289,50 @@ void Gproduits::on_tout_afficher_netoy_clicked()
 
 void Gproduits::on_line_rech_netoy_textChanged(const QString &arg1)
 {
-    if(ui->comboBox_rech_netoy->currentText() == "Nom" || ui->comboBox_rech_netoy->currentText() == "Reference")
+    QString ref,quant,res;
+    int val;
+    if(ui->comboBox_rech_netoy->currentText() == "Nom" || ui->comboBox_rech_netoy->currentText() == "Reference"){
         ui->tabNetoy->setModel(ptmp.afficher_rech_netoy(ui->comboBox_rech_netoy->currentText(),ui->line_rech_netoy->text()));
+        QSqlQuery q;
+        if(ui->comboBox_rech_netoy->currentText() == "Reference"){
+            res=ui->line_rech_netoy->text();
+        q.prepare("select * from produits_netoyage where reference_prodn like '%"+res+"%'");
+        q.exec();
+        }
+        while(q.next()){
+        quant = q.value(3).toString();
+        ref = q.value(4).toString();
+        }
+        if(ref != ""){
+            val = quant.toInt();
+            if(val>0){
+                val--;
+                res=QString::number(val);
+                q.prepare("update produits_netoyage set quantite_prodn=:quantite where reference_prodn=:ref");
+                q.bindValue(":quantite",res);
+                q.bindValue(":ref",ui->line_rech_netoy->text());
+                q.exec();
+                ui->label_info_netoy->setText("Produit achete");
+                A->write_to_arduino("1");
+            }else{
+                A->write_to_arduino("0");
+            }
+
+            }
+            else
+                ui->label_info_netoy->setText("reference non trouve");
+        }else{
+            ui->label_info_netoy->setText("Non Trouve.Verifier le critere de recherche.");
+        }
     if(ui->comboBox_rech_netoy->currentText() == "Numero ou Quantite")
         ui->tabNetoy->setModel(ptmp.afficher_rech_netoy(ui->line_rech_netoy->text().toInt()));
+
 }
 
 void Gproduits::on_quitter_netoy_clicked()
 {
     hide();
+    delete A;
     w2 = new MainWindow(this);
     w2->show();
 }
@@ -301,4 +350,23 @@ void Gproduits::on_tab_employee_2_currentChanged(int index)
         e1 = new Employee(this);
         e1->show();
     }
+}
+
+void Gproduits::on_scan_code_clicked()
+{
+    ui->line_rech_netoy->clear();
+    ui->line_ref_netoy->clear();
+    QString res,ref,quant;
+    int val;
+    QString code = QString(A->read_from_arduino());
+    QStringList lcode =code.split(QRegExp("\\W+"), QString::SkipEmptyParts);
+    for(int i=0;i<lcode.length();i++){
+     res+=lcode[i];
+    }
+    ui->line_rech_netoy->setText(res);
+    ui->line_ref_netoy->setText(res);
+}
+
+void Gproduits::update_label(){
+
 }
