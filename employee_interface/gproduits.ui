@@ -1463,12 +1463,12 @@ QDateEdit::drop-down {
    </widget>
    <widget class="QWidget" name="tab_4">
     <attribute name="title">
-     <string>...</string>
+     <string>GArticles</string>
     </attribute>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
-     <string>...</string>
+     <string>GMateriels</string>
     </attribute>
    </widget>
    <widget class="QWidget" name="tab_3">

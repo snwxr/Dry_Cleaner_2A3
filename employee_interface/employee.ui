@@ -2613,6 +2613,11 @@ QDateEdit::drop-down {
      <string>Garticles</string>
     </attribute>
    </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>Gmateriels</string>
+    </attribute>
+   </widget>
   </widget>
  </widget>
  <resources/>

@@ -1,4 +1,9 @@
-QT       += core gui sql printsupport network widgets serialport
+QT       += core gui sql printsupport network widgets serialport \
+quick
+
+QT       += network
+QT    +=serialport
+QT +=core
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -33,7 +38,11 @@ SOURCES += \
     arduino.cpp \
     article.cpp \
     garticle.cpp \
-    popup.cpp
+    popup.cpp \
+    gmat.cpp \
+    mailing.cpp \
+    materiels.cpp \
+    smtp.cpp
 
 HEADERS += \
     connection.h \
@@ -52,7 +61,11 @@ HEADERS += \
     arduino.h \
     article.h \
     garticle.h \
-    popup.h
+    popup.h \
+    gmat.h \
+    mailing.h \
+    materiels.h \
+    smtp.h
 
 FORMS += \
     employee.ui \
@@ -61,7 +74,8 @@ FORMS += \
     chatwindow.ui \
     command.ui \
     gproduits.ui \
-    garticle.ui
+    garticle.ui \
+    gmat.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

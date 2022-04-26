@@ -15,10 +15,12 @@
 #include "arduino.h"
 #include "gproduits.h"
 #include "employee.h"
+#include "gmat.h"
 
 Arduino *A1;
 Gproduits *g1;
 Employee *e2;
+gmat *gm2;
 
 garticle::garticle(QWidget *parent) :
     QDialog(parent),
@@ -480,5 +482,10 @@ void garticle::on_tab_article_currentChanged(int index)
         hide();
         e2 = new Employee(this);
         e2->show();
+    }
+    if(index == 3){
+        hide();
+        gm2 = new gmat(this);
+        gm2->show();
     }
 }

@@ -15,11 +15,15 @@
 #include <employee.h>
 #include "command.h"
 #include "arduino.h"
+#include "garticle.h"
+#include "gmat.h"
 
 Command *co;
 Employee *e1;
 MainWindow *w2;
 Arduino *A;
+garticle *a1;
+gmat *gm1;
 Gproduits::Gproduits(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Gproduits)
@@ -349,6 +353,16 @@ void Gproduits::on_tab_employee_2_currentChanged(int index)
         hide();
         e1 = new Employee(this);
         e1->show();
+    }
+    if(index==2){
+        hide();
+        a1 = new garticle(this);
+        a1->show();
+    }
+    if(index == 3){
+        hide();
+        gm1 = new gmat(this);
+        gm1->show();
     }
 }
 
