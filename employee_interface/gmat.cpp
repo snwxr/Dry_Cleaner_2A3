@@ -16,10 +16,12 @@
 #include "employee.h"
 #include "gproduits.h"
 #include "garticle.h"
+#include "clients.h"
 
 Employee *e3;
 garticle *a2;
 Gproduits *g2;
+Clients *cl3;
 
 gmat::gmat(QWidget *parent) :
     QDialog(parent),
@@ -401,5 +403,10 @@ void gmat::on_tabWidget_currentChanged(int index)
         hide();
         a2 = new garticle(this);
         a2->show();
+    }
+    if(index == 4){
+        hide();
+        cl3 = new Clients(this);
+        cl3->show();
     }
 }

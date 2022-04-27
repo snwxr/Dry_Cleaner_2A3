@@ -1,11 +1,11 @@
-QT       += core gui sql printsupport network widgets serialport \
+QT       += core gui sql printsupport network widgets serialport charts location \
 quick
 
 QT       += network
 QT    +=serialport
 QT +=core
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quickwidgets
 
 CONFIG += c++11
 
@@ -42,7 +42,11 @@ SOURCES += \
     gmat.cpp \
     mailing.cpp \
     materiels.cpp \
-    smtp.cpp
+    smtp.cpp \
+    clients.cpp \
+    gclients.cpp \
+    map.cpp \
+    statistiques.cpp
 
 HEADERS += \
     connection.h \
@@ -65,7 +69,11 @@ HEADERS += \
     gmat.h \
     mailing.h \
     materiels.h \
-    smtp.h
+    smtp.h \
+    clients.h \
+    gclients.h \
+    map.h \
+    statistiques.h
 
 FORMS += \
     employee.ui \
@@ -75,9 +83,15 @@ FORMS += \
     command.ui \
     gproduits.ui \
     garticle.ui \
-    gmat.ui
+    gmat.ui \
+    clients.ui \
+    map.ui \
+    statistiques.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    qml.qrc

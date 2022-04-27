@@ -109,8 +109,6 @@ Makefile: ../employee_interface/employee_interface.pro C:/Qt/Qt5.9.9/5.9.9/mingw
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_concurrent_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_core.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_core_private.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_datavisualization.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_datavisualization_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_dbus.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_dbus_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_designer.pri \
@@ -135,8 +133,6 @@ Makefile: ../employee_interface/employee_interface.pro C:/Qt/Qt5.9.9/5.9.9/mingw
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_network.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_network_private.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_networkauth.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_networkauth_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_nfc.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_nfc_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_opengl.pri \
@@ -149,8 +145,6 @@ Makefile: ../employee_interface/employee_interface.pro C:/Qt/Qt5.9.9/5.9.9/mingw
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_positioning_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_printsupport.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_printsupport_private.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_purchasing.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_purchasing_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_qml.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_qml_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_qmldebug_private.pri \
@@ -166,14 +160,6 @@ Makefile: ../employee_interface/employee_interface.pro C:/Qt/Qt5.9.9/5.9.9/mingw
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_quickwidgets.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_quickwidgets_private.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_remoteobjects.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_remoteobjects_private.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_repparser.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_repparser_private.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_script.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_script_private.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_scripttools.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_scripttools_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_scxml.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_scxml_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_sensors.pri \
@@ -188,8 +174,6 @@ Makefile: ../employee_interface/employee_interface.pro C:/Qt/Qt5.9.9/5.9.9/mingw
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_svg_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_testlib.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_testlib_private.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_texttospeech.pri \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_texttospeech_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_theme_support_private.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_uiplugin.pri \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_uitools.pri \
@@ -236,11 +220,17 @@ Makefile: ../employee_interface/employee_interface.pro C:/Qt/Qt5.9.9/5.9.9/mingw
 		../employee_interface/employee_interface.pro \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/qtmaind.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5PrintSupport.prl \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Charts.prl \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5QuickWidgets.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Widgets.prl \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Location.prl \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Quick.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Gui.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Sql.prl \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Qml.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Network.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5SerialPort.prl \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Positioning.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile ..\employee_interface\employee_interface.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -291,8 +281,6 @@ C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_concurrent.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_concurrent_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_core.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_core_private.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_datavisualization.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_datavisualization_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_dbus.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_dbus_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_designer.pri:
@@ -317,8 +305,6 @@ C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_multimediawidgets.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_network.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_network_private.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_networkauth.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_networkauth_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_nfc.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_nfc_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_opengl.pri:
@@ -331,8 +317,6 @@ C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_positioning.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_positioning_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_printsupport.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_printsupport_private.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_purchasing.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_purchasing_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_qml.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_qml_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_qmldebug_private.pri:
@@ -348,14 +332,6 @@ C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_quickparticles_private.pri
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_quicktemplates2_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_quickwidgets.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_quickwidgets_private.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_remoteobjects.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_remoteobjects_private.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_repparser.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_repparser_private.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_script.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_script_private.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_scripttools.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_scripttools_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_scxml.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_scxml_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_sensors.pri:
@@ -370,8 +346,6 @@ C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_svg.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_svg_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_testlib.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_testlib_private.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_texttospeech.pri:
-C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_texttospeech_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_theme_support_private.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_uiplugin.pri:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/modules/qt_lib_uitools.pri:
@@ -418,11 +392,17 @@ C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/lex.prf:
 ../employee_interface/employee_interface.pro:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/qtmaind.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5PrintSupport.prl:
+C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Charts.prl:
+C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5QuickWidgets.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Widgets.prl:
+C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Location.prl:
+C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Quick.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Gui.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Sql.prl:
+C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Qml.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Network.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5SerialPort.prl:
+C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Positioning.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\employee_interface\employee_interface.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

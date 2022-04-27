@@ -17,6 +17,15 @@ INPUT(
 ./release\article.o
 ./release\garticle.o
 ./release\popup.o
+./release\gmat.o
+./release\mailing.o
+./release\materiels.o
+./release\smtp.o
+./release\clients.o
+./release\gclients.o
+./release\map.o
+./release\statistiques.o
+./release\qrc_qml.o
 ./release\moc_employee.o
 ./release\moc_mainwindow.o
 ./release\moc_chatserver.o
@@ -28,4 +37,8 @@ INPUT(
 ./release\moc_gproduits.o
 ./release\moc_garticle.o
 ./release\moc_popup.o
+./release\moc_gmat.o
+./release\moc_clients.o
+./release\moc_map.o
+./release\moc_statistiques.o
 );

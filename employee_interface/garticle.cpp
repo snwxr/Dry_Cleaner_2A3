@@ -16,11 +16,13 @@
 #include "gproduits.h"
 #include "employee.h"
 #include "gmat.h"
+#include "clients.h"
 
 Arduino *A1;
 Gproduits *g1;
 Employee *e2;
 gmat *gm2;
+Clients *cl2;
 
 garticle::garticle(QWidget *parent) :
     QDialog(parent),
@@ -487,5 +489,10 @@ void garticle::on_tab_article_currentChanged(int index)
         hide();
         gm2 = new gmat(this);
         gm2->show();
+    }
+    if(index == 4){
+        hide();
+        cl2 = new Clients(this);
+        cl2->show();
     }
 }

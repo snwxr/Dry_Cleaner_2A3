@@ -1486,9 +1486,9 @@ public:
         );
         scan_code->setText(QApplication::translate("Gproduits", "Scan", Q_NULLPTR));
         tab_employee_2->setTabText(tab_employee_2->indexOf(tab_6), QApplication::translate("Gproduits", "GProduits", Q_NULLPTR));
-        tab_employee_2->setTabText(tab_employee_2->indexOf(tab_4), QApplication::translate("Gproduits", "...", Q_NULLPTR));
-        tab_employee_2->setTabText(tab_employee_2->indexOf(tab_2), QApplication::translate("Gproduits", "...", Q_NULLPTR));
-        tab_employee_2->setTabText(tab_employee_2->indexOf(tab_3), QApplication::translate("Gproduits", "...", Q_NULLPTR));
+        tab_employee_2->setTabText(tab_employee_2->indexOf(tab_4), QApplication::translate("Gproduits", "GArticles", Q_NULLPTR));
+        tab_employee_2->setTabText(tab_employee_2->indexOf(tab_2), QApplication::translate("Gproduits", "GMateriels", Q_NULLPTR));
+        tab_employee_2->setTabText(tab_employee_2->indexOf(tab_3), QApplication::translate("Gproduits", "GClients", Q_NULLPTR));
         tab_employee_2->setTabText(tab_employee_2->indexOf(tab_5), QApplication::translate("Gproduits", "...", Q_NULLPTR));
     } // retranslateUi
 

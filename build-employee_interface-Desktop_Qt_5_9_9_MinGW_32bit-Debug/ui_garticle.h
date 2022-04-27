@@ -104,6 +104,8 @@ public:
     QPushButton *open;
     QLabel *label_info_art;
     QPushButton *get_photo;
+    QWidget *tab_4;
+    QWidget *tab_5;
 
     void setupUi(garticle *garticle)
     {
@@ -1267,7 +1269,7 @@ public:
         groupBox->setGeometry(QRect(390, 200, 321, 301));
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 40, 291, 241));
+        layoutWidget->setGeometry(QRect(10, 40, 291, 246));
         verticalLayout_7 = new QVBoxLayout(layoutWidget);
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
         verticalLayout_7->setContentsMargins(0, 0, 0, 0);
@@ -2617,7 +2619,7 @@ public:
 
         layoutWidget3 = new QWidget(tab);
         layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
-        layoutWidget3->setGeometry(QRect(390, 10, 230, 52));
+        layoutWidget3->setGeometry(QRect(390, 10, 230, 56));
         verticalLayout_8 = new QVBoxLayout(layoutWidget3);
         verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
         verticalLayout_8->setContentsMargins(0, 0, 0, 0);
@@ -2670,6 +2672,12 @@ public:
         get_photo->setObjectName(QStringLiteral("get_photo"));
         get_photo->setGeometry(QRect(730, 400, 75, 23));
         tab_article->addTab(tab, QString());
+        tab_4 = new QWidget();
+        tab_4->setObjectName(QStringLiteral("tab_4"));
+        tab_article->addTab(tab_4, QString());
+        tab_5 = new QWidget();
+        tab_5->setObjectName(QStringLiteral("tab_5"));
+        tab_article->addTab(tab_5, QString());
 
         retranslateUi(garticle);
 
@@ -2719,6 +2727,8 @@ public:
         label_info_art->setText(QString());
         get_photo->setText(QApplication::translate("garticle", "Get Photo", Q_NULLPTR));
         tab_article->setTabText(tab_article->indexOf(tab), QApplication::translate("garticle", "Garticle", Q_NULLPTR));
+        tab_article->setTabText(tab_article->indexOf(tab_4), QApplication::translate("garticle", "GMateriels", Q_NULLPTR));
+        tab_article->setTabText(tab_article->indexOf(tab_5), QApplication::translate("garticle", "GClients", Q_NULLPTR));
     } // retranslateUi
 
 };

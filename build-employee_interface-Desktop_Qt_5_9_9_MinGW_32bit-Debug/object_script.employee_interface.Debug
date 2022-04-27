@@ -17,6 +17,15 @@ INPUT(
 ./debug\article.o
 ./debug\garticle.o
 ./debug\popup.o
+./debug\gmat.o
+./debug\mailing.o
+./debug\materiels.o
+./debug\smtp.o
+./debug\clients.o
+./debug\gclients.o
+./debug\map.o
+./debug\statistiques.o
+./debug\qrc_qml.o
 ./debug\moc_employee.o
 ./debug\moc_mainwindow.o
 ./debug\moc_chatserver.o
@@ -28,4 +37,8 @@ INPUT(
 ./debug\moc_gproduits.o
 ./debug\moc_garticle.o
 ./debug\moc_popup.o
+./debug\moc_gmat.o
+./debug\moc_clients.o
+./debug\moc_map.o
+./debug\moc_statistiques.o
 );

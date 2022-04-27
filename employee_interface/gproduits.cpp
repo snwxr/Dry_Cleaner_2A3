@@ -17,6 +17,7 @@
 #include "arduino.h"
 #include "garticle.h"
 #include "gmat.h"
+#include "clients.h"
 
 Command *co;
 Employee *e1;
@@ -24,6 +25,8 @@ MainWindow *w2;
 Arduino *A;
 garticle *a1;
 gmat *gm1;
+Clients *cl1;
+
 Gproduits::Gproduits(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Gproduits)
@@ -363,6 +366,11 @@ void Gproduits::on_tab_employee_2_currentChanged(int index)
         hide();
         gm1 = new gmat(this);
         gm1->show();
+    }
+    if(index == 4){
+        hide();
+        cl1 = new Clients(this);
+        cl1->show();
     }
 }
 

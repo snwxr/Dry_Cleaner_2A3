@@ -1473,7 +1473,7 @@ QDateEdit::drop-down {
    </widget>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
-     <string>...</string>
+     <string>GClients</string>
     </attribute>
    </widget>
    <widget class="QWidget" name="tab_5">

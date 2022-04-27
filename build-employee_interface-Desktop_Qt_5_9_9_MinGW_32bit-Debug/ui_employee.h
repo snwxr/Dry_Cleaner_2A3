@@ -83,6 +83,8 @@ public:
     QLabel *label_info;
     QWidget *tab_produits;
     QWidget *tab_articles;
+    QWidget *tab_2;
+    QWidget *tab_3;
 
     void setupUi(QWidget *Employee)
     {
@@ -2582,6 +2584,12 @@ public:
         tab_articles = new QWidget();
         tab_articles->setObjectName(QStringLiteral("tab_articles"));
         tab_produits_2->addTab(tab_articles, QString());
+        tab_2 = new QWidget();
+        tab_2->setObjectName(QStringLiteral("tab_2"));
+        tab_produits_2->addTab(tab_2, QString());
+        tab_3 = new QWidget();
+        tab_3->setObjectName(QStringLiteral("tab_3"));
+        tab_produits_2->addTab(tab_3, QString());
 
         retranslateUi(Employee);
 
@@ -2630,6 +2638,8 @@ public:
         tab_produits_2->setTabText(tab_produits_2->indexOf(tab), QApplication::translate("Employee", "GEmployee", Q_NULLPTR));
         tab_produits_2->setTabText(tab_produits_2->indexOf(tab_produits), QApplication::translate("Employee", "GProduits", Q_NULLPTR));
         tab_produits_2->setTabText(tab_produits_2->indexOf(tab_articles), QApplication::translate("Employee", "Garticles", Q_NULLPTR));
+        tab_produits_2->setTabText(tab_produits_2->indexOf(tab_2), QApplication::translate("Employee", "Gmateriels", Q_NULLPTR));
+        tab_produits_2->setTabText(tab_produits_2->indexOf(tab_3), QApplication::translate("Employee", "Gclients", Q_NULLPTR));
     } // retranslateUi
 
 };
