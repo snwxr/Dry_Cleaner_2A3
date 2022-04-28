@@ -20,12 +20,14 @@
 #include "garticle.h"
 #include "gmat.h"
 #include "clients.h"
+#include "suppliers.h"
 
 MainWindow *w;
 Gproduits *g;
 garticle *a;
 gmat *gm;
 Clients *cl;
+Suppliers *s1;
 
 Employee::Employee(QWidget *parent) :
     QDialog(parent),
@@ -379,5 +381,10 @@ void Employee::on_tab_produits_2_currentChanged(int index)
         hide();
         cl = new Clients(this);
         cl->show();
+    }
+    if(index == 5){
+        hide();
+        s1 = new Suppliers(this);
+        s1->show();
     }
 }

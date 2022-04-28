@@ -4,6 +4,7 @@ quick
 QT       += network
 QT    +=serialport
 QT +=core
+include(QZXing/QZXing.pri)
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quickwidgets
 
@@ -46,7 +47,9 @@ SOURCES += \
     clients.cpp \
     gclients.cpp \
     map.cpp \
-    statistiques.cpp
+    statistiques.cpp \
+    suppliers.cpp \
+    gsuppliers.cpp
 
 HEADERS += \
     connection.h \
@@ -73,7 +76,9 @@ HEADERS += \
     clients.h \
     gclients.h \
     map.h \
-    statistiques.h
+    statistiques.h \
+    suppliers.h \
+    gsuppliers.h
 
 FORMS += \
     employee.ui \
@@ -86,7 +91,8 @@ FORMS += \
     gmat.ui \
     clients.ui \
     map.ui \
-    statistiques.ui
+    statistiques.ui \
+    suppliers.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -94,4 +100,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    qml.qrc
+    qml.qrc \
+    translations.qrc

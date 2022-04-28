@@ -18,14 +18,15 @@
 #include "garticle.h"
 #include "gmat.h"
 #include "clients.h"
+#include "suppliers.h"
 
 Command *co;
 Employee *e1;
 MainWindow *w2;
-Arduino *A;
 garticle *a1;
 gmat *gm1;
 Clients *cl1;
+Suppliers *s3;
 
 Gproduits::Gproduits(QWidget *parent) :
     QDialog(parent),
@@ -34,6 +35,7 @@ Gproduits::Gproduits(QWidget *parent) :
     ui->setupUi(this);
     ui->tabNetoy->setModel(ptmp.afficher());
     A = new Arduino();
+    A->setType("produits");
     int ret = A->connect_arduino();//lancer la connection a arduino
     switch (ret) {
     case 0:qDebug()<<"arduino is available and connected to: "<<A->get_arduino_portname();
@@ -42,6 +44,7 @@ Gproduits::Gproduits(QWidget *parent) :
         break;
     case -1:qDebug()<<"arduino is not available";
     }
+    if(A)
     QObject::connect(A->getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));//permet de lancer le slot
     //le slot update_label suite a la reception du signal readyRead (reception des donnees).
 }
@@ -53,6 +56,7 @@ Gproduits::~Gproduits()
 
 void Gproduits::on_btn_ajout_netoy_clicked()
 {
+    ui->label_info_netoy->clear();
     bool test = false;
     int n = ui->line_num_netoy->text().toInt();
     int qty = ui->line_qty_netoy->text().toInt();
@@ -82,6 +86,7 @@ void Gproduits::on_btn_ajout_netoy_clicked()
 
 void Gproduits::on_btn_sup_netoy_clicked()
 {
+    ui->label_info_netoy->clear();
     int n = ui->line_num_netoy->text().toInt();
     bool test = ptmp.supprimer(n);
 
@@ -296,6 +301,7 @@ void Gproduits::on_tout_afficher_netoy_clicked()
 
 void Gproduits::on_line_rech_netoy_textChanged(const QString &arg1)
 {
+    ui->label_info_netoy->clear();
     QString ref,quant,res;
     int val;
     if(ui->comboBox_rech_netoy->currentText() == "Nom" || ui->comboBox_rech_netoy->currentText() == "Reference"){
@@ -353,24 +359,34 @@ void Gproduits::on_btn_cmd_netoy_clicked()
 void Gproduits::on_tab_employee_2_currentChanged(int index)
 {
     if(index == 0){
+        A->close_arduino();
         hide();
         e1 = new Employee(this);
         e1->show();
     }
     if(index==2){
+        A->close_arduino();
         hide();
         a1 = new garticle(this);
         a1->show();
     }
     if(index == 3){
+        A->close_arduino();
         hide();
         gm1 = new gmat(this);
         gm1->show();
     }
     if(index == 4){
+        A->close_arduino();
         hide();
         cl1 = new Clients(this);
         cl1->show();
+    }
+    if(index == 5){
+        A->close_arduino();
+        hide();
+        s3 = new Suppliers(this);
+        s3->show();
     }
 }
 

@@ -2732,6 +2732,11 @@ QDateEdit::drop-down {
      <string>GClients</string>
     </attribute>
    </widget>
+   <widget class="QWidget" name="tab_6">
+    <attribute name="title">
+     <string>GFournisseurs</string>
+    </attribute>
+   </widget>
   </widget>
  </widget>
  <customwidgets>

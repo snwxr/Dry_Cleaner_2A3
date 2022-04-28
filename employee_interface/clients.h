@@ -87,7 +87,7 @@ private:
     //variable arduino
     QByteArray data; // variable contenant les données reçues
 
-    Arduino A; // objet temporaire
+    Arduino *A; // objet temporaire
     map *m;
     QSqlQueryModel * Modal;
     QPrintDialog *dialog;

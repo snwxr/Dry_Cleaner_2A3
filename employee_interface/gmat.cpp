@@ -17,11 +17,13 @@
 #include "gproduits.h"
 #include "garticle.h"
 #include "clients.h"
+#include "suppliers.h"
 
 Employee *e3;
 garticle *a2;
 Gproduits *g2;
 Clients *cl3;
+Suppliers *s4;
 
 gmat::gmat(QWidget *parent) :
     QDialog(parent),
@@ -77,7 +79,6 @@ void gmat::on_supp_mat_clicked()
          ui->etat_mat->setCurrentIndex(0);
          ui->gamme_mat->setCurrentIndex(0);
          ui->tab_mat->setModel(mtmp.afficher());
-        QMessageBox::information(nullptr,QObject::tr("OK."),QObject::tr("Suppression effectue\nClick cancel to exit."),QMessageBox::Cancel);
         ui->label_info_mat->setText("Suppression effectue.");
     }else
     ui->label_info_mat->setText("Suppression non effectue.");
@@ -408,5 +409,10 @@ void gmat::on_tabWidget_currentChanged(int index)
         hide();
         cl3 = new Clients(this);
         cl3->show();
+    }
+    if(index == 5){
+        hide();
+        s4 = new Suppliers(this);
+        s4->show();
     }
 }

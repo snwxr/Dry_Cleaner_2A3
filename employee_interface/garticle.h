@@ -61,6 +61,7 @@ private:
     QByteArray data;
     QTextDocument *document;
     QPrintDialog *dialog;
+    Arduino *A1;
 };
 
 #endif // GARTICLE_H

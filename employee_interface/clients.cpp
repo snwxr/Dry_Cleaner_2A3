@@ -16,11 +16,14 @@
 #include "gproduits.h"
 #include "garticle.h"
 #include "gmat.h"
+#include "arduino.h"
+#include "suppliers.h"
 
 Employee *e4;
 Gproduits *g4;
 garticle *a4;
 gmat *gm4;
+Suppliers *s5;
 
 // Holds current value of calculation
 double calcVal=0.0;
@@ -75,17 +78,19 @@ Clients::Clients(QWidget *parent) :
         // Connect change sign
         connect(ui->ChangeSign, SIGNAL(released()), this,
                 SLOT(ChangeNumberSign()));
-
+        A = new Arduino();
+        A->setType("clients");
         //Arduino: connect label to updatelabel
-        int ret=A.connect_arduino(); // lancer la connexion à arduino
+        int ret=A->connect_arduino(); // lancer la connexion à arduino
         switch(ret){
-        case(0):qDebug()<< "arduino is available and connected to : "<< A.get_arduino_portname();
+        case(0):qDebug()<< "arduino is available and connected to : "<< A->get_arduino_portname();
             break;
-        case(1):qDebug() << "arduino is available but not connected to :" <<A.get_arduino_portname();
+        case(1):qDebug() << "arduino is available but not connected to :" <<A->get_arduino_portname();
            break;
         case(-1):qDebug() << "arduino is not available";
         }
-         QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
+        if(A)
+         QObject::connect(A->getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
          //le slot update_label suite à la reception du signal readyRead (reception des données).
 
 }
@@ -562,7 +567,7 @@ void Clients::on_MAP_clicked()
 }
 void Clients::update_label()// arduino
 {
-    data=A.read_from_arduino();
+    data=A->read_from_arduino();
     qDebug() << data;
     QString temp = QString::fromStdString(data.toStdString());
     qDebug() << temp;
@@ -602,11 +607,11 @@ void Clients::update_label()// arduino
         QString state=query.value(0).toString();
         ui->EtatAticle->setText(state);
         if(state=="Prete"){
-        A.write_to_arduino("1");
+        A->write_to_arduino("1");
         }
         else if(state=="En Cours")
         {
-            A.write_to_arduino("0");
+            A->write_to_arduino("0");
         }
         //}
 
@@ -618,23 +623,33 @@ void Clients::update_label()// arduino
 void Clients::on_tabWidget_currentChanged(int index)
 {
     if(index == 0){
+        A->close_arduino();
         hide();
         e4 = new Employee(this);
         e4->show();
     }
     if(index == 1){
+        A->close_arduino();
         hide();
         g4 = new Gproduits(this);
         g4->show();
     }
     if(index == 2){
+        A->close_arduino();
         hide();
         a4 = new garticle(this);
         a4->show();
     }
     if(index == 3){
+        A->close_arduino();
         hide();
         gm4 = new gmat(this);
         gm4->show();
+    }
+    if(index == 5){
+        A->close_arduino();
+        hide();
+        s5 = new Suppliers(this);
+        s5->show();
     }
 }

@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "employee.h"
 #include "serverwindow.h"
+#include <QTranslator>
+#include <QInputDialog>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -37,6 +39,15 @@ void MainWindow::on_signin_clicked()
     if(username == username_line && password == password_line && username_line != "" && password_line != "")
     {
         hide();
+        QTranslator t;
+        QApplication *A=qApp;
+        QStringList languages;
+        languages << "French" << "English";
+        QString lang =QInputDialog::getItem(NULL,"Select a language","Language",languages);
+        if(lang == "English")
+            t.load(":/english.qm");
+        if(lang != "French")
+            A->installTranslator(&t);
         e = new Employee(this);
         e->show();
     }

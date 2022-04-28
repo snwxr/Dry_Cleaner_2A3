@@ -9,13 +9,17 @@ int Arduino::connect_arduino()
 {
     //recherche du port sur lequel la carte arduino identifiee par arduino_mega_vendor_id
     //est connectee
+    if(type == "produits")
+        arduino_mega_product_id = 66;
+    else
+        arduino_mega_product_id = 67;
 
     foreach(const QSerialPortInfo &serial_port_info, QSerialPortInfo::availablePorts()){
             if(serial_port_info.hasVendorIdentifier() && serial_port_info.hasProductIdentifier()){
                 if(serial_port_info.vendorIdentifier() == arduino_mega_vendor_id && serial_port_info.productIdentifier() == arduino_mega_product_id){
                     arduino_is_available = true;
                     arduino_port_name = serial_port_info.portName();
-                }
+               }
             }
         }
 
@@ -30,7 +34,10 @@ int Arduino::connect_arduino()
             qDebug()<<"open";
             return 1;
         }else{
-            serial->setBaudRate(QSerialPort::Baud9600); //debit:115200 bits/s
+            if(type == "clients")
+            serial->setBaudRate(QSerialPort::Baud115200); //debit:115200 bits/s
+            else
+                serial->setBaudRate(QSerialPort::Baud9600);
             serial->setDataBits(QSerialPort::Data8); //Longueur des donnees : 8 bits
             serial->setParity(QSerialPort::NoParity); //1 bit de parite optionnel
             serial->setStopBits(QSerialPort::OneStop); // Nombre de bits de stop : 1

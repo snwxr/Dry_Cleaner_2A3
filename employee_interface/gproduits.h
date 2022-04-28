@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "produit.h"
+#include "arduino.h"
 
 namespace Ui {
 class Gproduits;
@@ -50,6 +51,7 @@ private slots:
 private:
     Ui::Gproduits *ui;
     Produit ptmp;
+    Arduino *A;
 };
 
 #endif // GPRODUITS_H

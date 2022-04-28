@@ -17,12 +17,13 @@
 #include "employee.h"
 #include "gmat.h"
 #include "clients.h"
+#include "suppliers.h"
 
-Arduino *A1;
 Gproduits *g1;
 Employee *e2;
 gmat *gm2;
 Clients *cl2;
+Suppliers *s2;
 
 garticle::garticle(QWidget *parent) :
     QDialog(parent),
@@ -32,6 +33,7 @@ garticle::garticle(QWidget *parent) :
     ui->tab_art->setModel(atmp.afficher());
     popUp = new PopUp();
     A1 = new Arduino();
+    A1->setType("");
         int ret = A1->connect_arduino();//lancer la connection a arduino
         switch (ret) {
         case 0:qDebug()<<"arduino is available and connected to: "<<A1->get_arduino_portname();
@@ -40,6 +42,7 @@ garticle::garticle(QWidget *parent) :
             break;
         case -1:qDebug()<<"arduino is not available";
         }
+        if(A1)
         QObject::connect(A1->getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));//permet de lancer le slot
         //le slot update_label suite a la reception du signal readyRead (reception des donnees).
 }
@@ -476,23 +479,32 @@ void garticle::on_get_photo_clicked()
 void garticle::on_tab_article_currentChanged(int index)
 {
     if(index == 1){
+        //A1->close_arduino();
         hide();
         g1 = new Gproduits(this);
         g1->show();
     }
     if(index == 0){
+        //A1->close_arduino();
         hide();
         e2 = new Employee(this);
         e2->show();
     }
     if(index == 3){
+        //A1->close_arduino();
         hide();
         gm2 = new gmat(this);
         gm2->show();
     }
     if(index == 4){
+        //A1->close_arduino();
         hide();
         cl2 = new Clients(this);
         cl2->show();
+    }
+    if(index == 5){
+        hide();
+        s2 = new Suppliers(this);
+        s2->show();
     }
 }

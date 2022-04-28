@@ -1059,6 +1059,11 @@ QTableView::indicator:unchecked {
      </property>
     </widget>
    </widget>
+   <widget class="QWidget" name="tab_6">
+    <attribute name="title">
+     <string>GFournisseurs</string>
+    </attribute>
+   </widget>
    <widget class="QWidget" name="Clients_stats">
     <attribute name="title">
      <string>Calcul</string>
